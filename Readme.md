@@ -11,6 +11,19 @@ I put both methods in here to test them out.
 
 This is probably a bit dirty.
 
+Doing this as an _extension_ rather than a handler _plugin_ provides better
+performance.  With a bunch of metrics coming in every second, using a regular
+handler _plugin_ caused a lot of forks and system load. It also appeared that
+my stats were lagging far behind as things tried to keep up.
+
+## Origin
+
+It's a bit of hodgepodge of code and ideas from these:
+
+* [https://github.com/sensu-plugins/sensu-plugins-influxdb](https://github.com/sensu-plugins/sensu-plugins-influxdb)
+* [https://github.com/seegno/sensu-influxdb-extension](https://github.com/seegno/sensu-influxdb-extension)
+* [https://github.com/lusis/sensu_influxdb_handler](https://github.com/lusis/sensu_influxdb_handler)
+
 ## Write Methods
 
 ### InfluxDB Rubygem
@@ -172,3 +185,4 @@ to so that you can observe what's getting sent to InfluxDB.
 
 This file will grow rapidly!  This is just a way to write human-readable
 output to a separate logfile than Sensu's.
+
